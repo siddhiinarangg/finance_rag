@@ -4,6 +4,7 @@ import numpy as np
 from dotenv import load_dotenv
 from google import genai
 from sentence_transformers import SentenceTransformer, CrossEncoder
+from rank_bm25 import BM25Okapi
 
 load_dotenv()
 client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
@@ -12,12 +13,19 @@ chunks = pd.read_parquet("chunks.parquet")
 embeddings = np.load("embeddings.npy")
 embed_model = SentenceTransformer("all-MiniLM-L6-v2")
 reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
+tokenized = [t.lower().split() for t in chunks["text"].tolist()]
+bm25 = BM25Okapi(tokenized)
 
 def retrieve(query, top_k=5, candidates=25):
-    query_vec = embed_model.encode([query])[0]
-    scores = embeddings @ query_vec
-    cand_idx = np.argsort(scores)[::-1][:candidates]
+    q_vec = embed_model.encode([query])[0]
+    dense = embeddings @ q_vec
+    sparse = bm25.get_scores(query.lower().split())
 
+    dense_n = (dense - dense.min()) / (dense.max() - dense.min() + 1e-9)
+    sparse_n = (sparse - sparse.min()) / (sparse.max() - sparse.min() + 1e-9)
+    combined = dense_n + sparse_n
+
+    cand_idx = np.argsort(combined)[::-1][:candidates]
     pairs = [[query, chunks.iloc[i]["text"]] for i in cand_idx]
     rerank_scores = reranker.predict(pairs)
     reranked = cand_idx[np.argsort(rerank_scores)[::-1]]
