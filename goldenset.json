@@ -1,0 +1,200 @@
+[
+  {
+    "question": "What is the minimum balance required to open a Bank of America Advantage Savings account?",
+    "answer_article_id": 477,
+    "company": "Bank of America",
+    "symbol": "BAC"
+  },
+  {
+    "question": "What is the amount of warehouse space that Prologis announced it is expanding in China?",
+    "answer_article_id": 3508,
+    "company": "Prologis",
+    "symbol": "PLD"
+  },
+  {
+    "question": "What was the new 52-week high reached by Ulta Beauty on Friday morning?",
+    "answer_article_id": 4201,
+    "company": "Ulta Beauty",
+    "symbol": "ULTA"
+  },
+  {
+    "question": "What is the amount of the quarterly cash dividend on Costco common stock that the company's board has approved to be paid in mid-November?",
+    "answer_article_id": 1197,
+    "company": "Costco",
+    "symbol": "COST"
+  },
+  {
+    "question": "What percentage of the time has Visa Inc. beaten revenue forecasts?",
+    "answer_article_id": 4348,
+    "company": "Visa Inc.",
+    "symbol": "V"
+  },
+  {
+    "question": "What action did ExxonMobil offer to help BP during the Gulf of Mexico oil crisis, according to ExxonMobil Chairman and CEO Rex Tillerson?",
+    "answer_article_id": 1721,
+    "company": "ExxonMobil",
+    "symbol": "XOM"
+  },
+  {
+    "question": "What action will Kroger take regarding Carl Icahn's proposed board nominees, Alexis C. Fox and Margarita Palau-Hernandez?",
+    "answer_article_id": 2551,
+    "company": "Kroger",
+    "symbol": "KR"
+  },
+  {
+    "question": "What does Invesco's chief global market strategist Kristina Hooper believe 2022 should be for emerging markets?",
+    "answer_article_id": 2359,
+    "company": "Invesco",
+    "symbol": "IVZ"
+  },
+  {
+    "question": "What action did UBS take regarding Corteva in its updated stock selection?",
+    "answer_article_id": 1176,
+    "company": "Corteva",
+    "symbol": "CTVA"
+  },
+  {
+    "question": "What price target did Suntrust Robinson raise for Tractor Supply Co?",
+    "answer_article_id": 4104,
+    "company": "Tractor Supply",
+    "symbol": "TSCO"
+  },
+  {
+    "question": "What is the total number of passengers on the Norwegian Dawn when it ran aground near Bermuda's North Channel, according to Norwegian Cruise Line Holdings?",
+    "answer_article_id": 3166,
+    "company": "Norwegian Cruise Line Holdings",
+    "symbol": "NCLH"
+  },
+  {
+    "question": "What rating does Morgan Stanley reiterate for Ford Motor Company heading into 2024?",
+    "answer_article_id": 1851,
+    "company": "Ford Motor Company",
+    "symbol": "F"
+  },
+  {
+    "question": "What was the outcome for DuPont's nominees in the election to the company's board of directors, according to DuPont?",
+    "answer_article_id": 1441,
+    "company": "DuPont",
+    "symbol": "DD"
+  },
+  {
+    "question": "What was Marathon Petroleum's net income for the third quarter, in dollars?",
+    "answer_article_id": 2712,
+    "company": "Marathon Petroleum",
+    "symbol": "MPC"
+  },
+  {
+    "question": "What amount have private insurers paid out in pharmacy claims for AbbVie's drug Humira, according to the lawsuit?",
+    "answer_article_id": 33,
+    "company": "AbbVie",
+    "symbol": "ABBV"
+  },
+  {
+    "question": "What yield does Duke Energy offer, according to Cramer?",
+    "answer_article_id": 1433,
+    "company": "Duke Energy",
+    "symbol": "DUK"
+  },
+  {
+    "question": "What was the full-year sales decline estimate for 3M, stated as a percentage range, as a result of their quarterly performance?",
+    "answer_article_id": 8,
+    "company": "3M",
+    "symbol": "MMM"
+  },
+  {
+    "question": "What was the percentage increase in catastrophe losses experienced by Allstate in the second quarter?",
+    "answer_article_id": 151,
+    "company": "Allstate",
+    "symbol": "ALL"
+  },
+  {
+    "question": "What price range does the YogaSport footwear line from Deckers Brands' Ahnu brand fall within?",
+    "answer_article_id": 1284,
+    "company": "Deckers Brands",
+    "symbol": "DECK"
+  },
+  {
+    "question": "What year did India ban foreign investment in cigarette manufacturing, according to Philip Morris International?",
+    "answer_article_id": 3419,
+    "company": "Philip Morris International",
+    "symbol": "PM"
+  },
+  {
+    "question": "What is the current valuation of Nvidia?",
+    "answer_article_id": 3188,
+    "company": "Nvidia",
+    "symbol": "NVDA"
+  },
+  {
+    "question": "What amount did Bank of New York Mellon agree to pay in court costs as part of the settlement with Russia?",
+    "answer_article_id": 492,
+    "company": "Bank of New York Mellon",
+    "symbol": "BK"
+  },
+  {
+    "question": "What is the regular APR range on purchases and balance transfers for the Wells Fargo Active Cash card?",
+    "answer_article_id": 4458,
+    "company": "Wells Fargo",
+    "symbol": "WFC"
+  },
+  {
+    "question": "What percentage upside from Tuesday's close is implied by the new price target set by the Deutsche Bank analyst for Tapestry, Inc. (TPR)?",
+    "answer_article_id": 3994,
+    "company": "Tapestry, Inc.",
+    "symbol": "TPR"
+  },
+  {
+    "question": "What date will MGM Resorts close all casino operations, according to the announcement?",
+    "answer_article_id": 2870,
+    "company": "MGM Resorts",
+    "symbol": "MGM"
+  },
+  {
+    "question": "What was the year-over-year percentage increase in Constellation Brands' adjusted fiscal first-quarter EPS?",
+    "answer_article_id": 1127,
+    "company": "Constellation Brands",
+    "symbol": "STZ"
+  },
+  {
+    "question": "What percent is Freeport-McMoRan up year to date, despite the recent plunge in its shares?",
+    "answer_article_id": 1892,
+    "company": "Freeport-McMoRan",
+    "symbol": "FCX"
+  },
+  {
+    "question": "When will Jamie Iannone take over as eBay CEO?",
+    "answer_article_id": 1469,
+    "company": "eBay",
+    "symbol": "EBAY"
+  },
+  {
+    "question": "What percentage of Zoetis shares have fallen since their recent peak in late July amid concerns about a weakening economy?",
+    "answer_article_id": 4603,
+    "company": "Zoetis",
+    "symbol": "ZTS"
+  },
+  {
+    "question": "What date did Equifax discover a breach, according to the company's statement on September 7?",
+    "answer_article_id": 1601,
+    "company": "Equifax",
+    "symbol": "EFX"
+  },
+  {
+    "question": "What is the expected timeframe for the closure of the deal between Hewlett Packard Enterprise and Cray, in terms of Hewlett Packard Enterprise's fiscal year 2020?",
+    "answer_article_id": 2104,
+    "company": "Hewlett Packard Enterprise",
+    "symbol": "HPE"
+  },
+  {
+    "question": "What happened to the shares of Intuitive Surgical on Wednesday's trading session?",
+    "answer_article_id": 2349,
+    "company": "Intuitive Surgical",
+    "symbol": "ISRG"
+  },
+  {
+    "question": "What earnings per share did Juniper Networks report for the fourth quarter, according to Refinitiv?",
+    "answer_article_id": 2460,
+    "company": "Juniper Networks",
+    "symbol": "JNPR"
+  }
+]
