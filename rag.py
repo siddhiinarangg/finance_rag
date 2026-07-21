@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from dotenv import load_dotenv
 from google import genai
-from sentence_transformers import SentenceTransformer
+from sentence_transformers import SentenceTransformer, CrossEncoder
 
 load_dotenv()
 client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
@@ -11,12 +11,17 @@ client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 chunks = pd.read_parquet("chunks.parquet")
 embeddings = np.load("embeddings.npy")
 embed_model = SentenceTransformer("all-MiniLM-L6-v2")
+reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
 
-def retrieve(query, top_k=5):
+def retrieve(query, top_k=5, candidates=25):
     query_vec = embed_model.encode([query])[0]
     scores = embeddings @ query_vec
-    top_idx = np.argsort(scores)[::-1][:top_k]
-    return chunks.iloc[top_idx]
+    cand_idx = np.argsort(scores)[::-1][:candidates]
+
+    pairs = [[query, chunks.iloc[i]["text"]] for i in cand_idx]
+    rerank_scores = reranker.predict(pairs)
+    reranked = cand_idx[np.argsort(rerank_scores)[::-1]]
+    return chunks.iloc[reranked[:top_k]]
 
 def answer(query):
     hits = retrieve(query)
@@ -37,7 +42,7 @@ Question: {query}
 Answer:"""
 
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-3-flash-preview",
         contents=prompt,
     )
 
