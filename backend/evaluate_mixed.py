@@ -16,9 +16,9 @@ reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
 tokenized = [t.lower().split() for t in chunks["text"].tolist()]
 bm25 = BM25Okapi(tokenized)
 
-with open("goldenset.json", encoding="utf-8") as f:
+with open("data/goldenset.json", encoding="utf-8") as f:
     answerable = [{"question": g["question"], "answerable": True} for g in json.load(f)]
-with open("refusal_set.json", encoding="utf-8") as f:
+with open("data/refusal_set.json", encoding="utf-8") as f:
     unanswerable = [{"question": r["question"], "answerable": False} for r in json.load(f)]
 
 mixed = answerable + unanswerable

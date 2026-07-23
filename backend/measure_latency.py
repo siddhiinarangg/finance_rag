@@ -21,7 +21,7 @@ bm25 = BM25Okapi(tokenized)
 startup = time.time() - t0
 print(f"startup (models + BM25 index): {startup:.2f}s\n")
 
-with open("goldenset.json", encoding="utf-8") as f:
+with open("data/goldenset.json", encoding="utf-8") as f:
     questions = [g["question"] for g in json.load(f)][:10]
 
 timings = {"embed": [], "dense": [], "bm25": [], "rerank": [], "llm": [], "total": []}

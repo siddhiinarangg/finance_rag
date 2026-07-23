@@ -19,7 +19,7 @@ reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
 tokenized = [t.lower().split() for t in chunks["text"].tolist()]
 bm25 = BM25Okapi(tokenized)
 
-with open("goldenset.json", encoding="utf-8") as f:
+with open("data/goldenset.json", encoding="utf-8") as f:
     golden = json.load(f)
 
 failed = [

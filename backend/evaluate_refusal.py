@@ -17,7 +17,7 @@ reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
 tokenized = [t.lower().split() for t in chunks["text"].tolist()]
 bm25 = BM25Okapi(tokenized)
 
-with open("refusal_set.json", encoding="utf-8") as f:
+with open("data/refusal_set.json", encoding="utf-8") as f:
     refusal_set = json.load(f)
 
 def retrieve(query, top_k=5, candidates=25):

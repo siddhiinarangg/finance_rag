@@ -103,7 +103,7 @@ for _, row in pool.iterrows():
     if not kept:
         time.sleep(1)
 
-with open("goldenset.json", "w", encoding="utf-8") as f:
+with open("data/goldenset.json", "w", encoding="utf-8") as f:
     json.dump(golden, f, indent=2, ensure_ascii=False)
 
 print(f"\nSaved {len(golden)} validated questions to goldenset.json")

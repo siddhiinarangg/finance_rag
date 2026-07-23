@@ -7,7 +7,7 @@ chunks = pd.read_parquet("chunks.parquet")
 embeddings = np.load("embeddings.npy")
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
-with open("goldenset.json", encoding="utf-8") as f:
+with open("data/goldenset.json", encoding="utf-8") as f:
     golden = json.load(f)
 
 chunk_article_ids = chunks["chunk_id"].str.split("_").str[0].astype(int).values
