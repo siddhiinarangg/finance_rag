@@ -1,6 +1,7 @@
 import os
-import pandas as pd
+import time
 import numpy as np
+import pandas as pd
 from dotenv import load_dotenv
 from google import genai
 from sentence_transformers import SentenceTransformer, CrossEncoder
@@ -9,12 +10,16 @@ from rank_bm25 import BM25Okapi
 load_dotenv()
 client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
 
+MODEL = "gemini-3.1-flash-lite"
+
 chunks = pd.read_parquet("chunks.parquet")
 embeddings = np.load("embeddings.npy")
 embed_model = SentenceTransformer("all-MiniLM-L6-v2")
 reranker = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
+
 tokenized = [t.lower().split() for t in chunks["text"].tolist()]
 bm25 = BM25Okapi(tokenized)
+
 
 def retrieve(query, top_k=5, candidates=25):
     q_vec = embed_model.encode([query])[0]
@@ -30,6 +35,7 @@ def retrieve(query, top_k=5, candidates=25):
     rerank_scores = reranker.predict(pairs)
     reranked = cand_idx[np.argsort(rerank_scores)[::-1]]
     return chunks.iloc[reranked[:top_k]]
+
 
 def answer(query):
     hits = retrieve(query)
@@ -49,21 +55,40 @@ Question: {query}
 
 Answer:"""
 
-    response = client.models.generate_content(
-        model="gemini-3.1-flash-lite",
-        contents=prompt,
-    )
+    response = None
+    for attempt in range(3):
+        try:
+            response = client.models.generate_content(model=MODEL, contents=prompt)
+            break
+        except Exception as e:
+            if attempt == 2:
+                print(f"\nThe language model is unavailable right now. ({str(e)[:100]})")
+                print("Please try again in a moment.")
+                return
+            time.sleep(5)
 
-    print("\n" + "="*60)
+    print("\n" + "=" * 60)
     print("ANSWER:\n")
     print(response.text)
-    print("\n" + "-"*60)
+    print("\n" + "-" * 60)
     print("SOURCES USED:")
     for i, (_, row) in enumerate(hits.iterrows(), 1):
-        print(f"[Source {i}] {row['company']} ({row['symbol']}) — {row['date']} — {row['url']}")
+        print(f"[Source {i}] {row['company']} ({row['symbol']}) - {row['date']} - {row['url']}")
+
 
 while True:
-    query = input("\nAsk a question (or 'quit'): ")
-    if query.lower() == "quit":
+    try:
+        query = input("\nAsk a question (or 'quit'): ")
+    except (KeyboardInterrupt, EOFError):
+        print()
         break
-    answer(query)
+
+    if query.strip().lower() in ("quit", "exit"):
+        break
+    if not query.strip():
+        continue
+
+    try:
+        answer(query)
+    except Exception as e:
+        print(f"\nSomething went wrong handling that question. ({str(e)[:100]})")
